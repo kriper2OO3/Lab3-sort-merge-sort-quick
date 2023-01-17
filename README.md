@@ -65,8 +65,21 @@ def sort_quick(lst):  #функция до исправления
     return sort_quick(left) + middle + sort_quick(right)
 
 
-def sort_quick(lst):  #исправленная функция
-
+def sort_quick_plus(lst):  #исправленная функция
+if len(lst) < 2: return lst  # если список из 1 или 0 элементов, то он уже отсортирован
+    pivot = lst[len(lst) // 2]  # берем элемент, относительно которого будем разбивать список
+    left = []  # список элементов меньше pivot
+    right = []  # список элементов больше pivot
+    middle = []  # список элементов, которые равны pivot
+    for i in range(len(lst)):  # цикл по длине списка
+        if lst[i] < pivot:  # если элемент меньше pivot
+            left += [lst[i]]  # то добавляем его в список меньших элементов
+        elif lst[i] > pivot:  # если элемент больше pivot
+            right += [lst[i]]  # то добавляем его в список меньших элементов
+        else: 
+            middle += [lst[i]]  # если элемент равен pivot, то добавляем в список равных элементов
+    return sort_quick_fix(left) + middle + sort_quick_fix(right)  # рекурсивный вызов для
+    # меньших элементов + равных(без рекурсии, т.к. сортировать нечего) + больших элементов()
 
 
 def sort_heap():
